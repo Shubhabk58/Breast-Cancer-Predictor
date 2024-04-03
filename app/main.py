@@ -1,5 +1,5 @@
 import streamlit as st
-import pypickle as pickle
+import pickle5 as pickle
 import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
@@ -122,8 +122,8 @@ def get_radar_chart(input_data):
 
 
 def add_predictions(input_data):
-  model = pickle.load("model/model.pkl")
-  scaler = pickle.load("model/scaler.pkl")
+  model = pickle.load(open("model/model.pkl", "rb"))
+  scaler = pickle.load(open("model/scaler.pkl", "rb"))
 
   input_array = np.array(list(input_data.values())).reshape(1, -1)
   input_array_scaled = scaler.transform(input_array)
